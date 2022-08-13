@@ -2,7 +2,7 @@ import "../../src/Estilos.css";
 import { useState, useEffect } from "react";
 import productosRopa from "../Componentes/Productos.json";
 
-const ContadorElementos = () => {
+const ContadorElementos = ({setCantidadCarrito}) => {
   const [productos, setProductos] = useState([]);
   useEffect(() => {
     setProductos(productosRopa);
@@ -24,6 +24,10 @@ const ContadorElementos = () => {
     }
   };
 
+  const onAdd = () => {
+    setCantidadCarrito(contador)
+  }
+
   return (
     <div className="contadorGral">
       <p className="contadorCuantosQueres">¿Cuántos querés?</p>
@@ -35,7 +39,7 @@ const ContadorElementos = () => {
         -
       </button>
       <div>
-        <button className="btnAgregarAlCarrito">Agregar al carrito</button>
+        <button className="btnAgregarAlCarrito" onClick={onAdd}>Agregar al carrito</button>
       </div>
     </div>
   );

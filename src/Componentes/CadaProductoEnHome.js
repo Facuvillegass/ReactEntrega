@@ -13,7 +13,6 @@ const CadaProuctoEnHome = ({producto}) => {
               <div><p className="precioCadaProductoEnHome">Precio: ${producto.precio}</p>
               <button className="btnVerMas">Ver más</button></div>
               </Link>
-              <ContadorElementos/>
             </div>
         </div>
     )

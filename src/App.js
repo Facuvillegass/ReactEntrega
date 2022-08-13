@@ -18,6 +18,7 @@ function App() {
           <Route path="/carrito" element={<Carrito/>} />
           <Route path="/producto/:productoId" element={<CadaProductoEnDetalle/>}/>
           <Route path="/categoria/:categoria" element={<ProductosPorCategoria/>}/>
+          <Route path="/cart" element={<Carrito/>}/>
           <Route path="/*" element={<h1>Página no encontrada, error.</h1>} />
         </Routes>
       </div>
