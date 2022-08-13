@@ -1,0 +1,29 @@
+.productoDetalle {
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+}
+.productoDetalle h1 {
+    padding-top: 20px;
+    color: lightcoral;
+    padding-bottom: 10px;
+}
+
+.productoDetalle h3 {
+    padding-top: 20px;
+    color: lightcoral;
+    padding-bottom: 10px;
+}
+
+.contadorEnDetalle{
+    background-color: lightcyan;
+}
+
+.contadorEnDetalle p {
+    color: black;
+}
+
+.contadorEnDetalle .contadorCuantosQueres2 {
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+}

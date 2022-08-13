@@ -1,0 +1,98 @@
+.imgCarritoNavbar {
+  height: 40px;
+}
+
+.saludoInicialHome {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.cadaProductoEnHome {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  gap: 20px;
+  padding: 40px;
+  justify-content: center;
+  border: solid 3px black;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  background-color: lightgreen;
+}
+
+.imgCadaProductoEnHome {
+  height: 180px;
+}
+
+.tituloCadaProductoEnHome {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: lightseagreen;
+}
+
+.descripcionCadaProductoEnHome {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.precioCadaProductoEnHome {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+}
+.contadorGral{
+    text-align: center;
+}
+
+.contadorCuantosQueres {
+  color: white;
+  text-align: center;
+  font-size: 25px;
+}
+
+.btnContador {
+  background-color: lightblue;
+  border: black 3px solid;
+  color: black;
+  padding: 5px 20px;
+  font-size: 15px;
+  border-radius: 10px;
+}
+
+.btnAgregarAlCarrito {
+    margin-top: 10px;
+    border: solid 10px white;
+    border-radius: 10px;
+    background-color: lightgreen;
+}
+
+.contadorCuantosQueres2 {
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  border: solid 3px lightcoral;
+  margin-top: 10px;
+  
+}
+
+.btnVerMas {
+  padding: 10px;
+}
+
+.productoEnDetalle{
+  text-align: center;
+}
+
+.categoriasStyles {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.categoriasStyles h2{
+  margin-bottom: 20px;
+}
