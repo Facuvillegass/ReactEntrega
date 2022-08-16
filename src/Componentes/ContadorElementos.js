@@ -1,8 +1,17 @@
 import "../../src/Estilos.css";
 import { useState, useEffect } from "react";
 import productosRopa from "../Componentes/Productos.json";
+import { useContext } from "react";
+import { CartContext } from "./ContextProveedor";
 
-const ContadorElementos = ({setCantidadCarrito}) => {
+const ContadorElementos = ({ setCantidadCarrito, data, cantidadCarrito }) => {
+  const {
+    agregarProductoAlCarrito,
+    tiempoReal,
+    setItemsTiempoReal,
+    itemsTiempoReal,
+  } = useContext(CartContext);
+
   const [productos, setProductos] = useState([]);
   useEffect(() => {
     setProductos(productosRopa);
@@ -25,8 +34,10 @@ const ContadorElementos = ({setCantidadCarrito}) => {
   };
 
   const onAdd = () => {
-    setCantidadCarrito(contador)
-  }
+    setCantidadCarrito(contador);
+    agregarProductoAlCarrito({ ...data, cantidadCarrito: contador });
+    tiempoReal();
+  };
 
   return (
     <div className="contadorGral">
@@ -39,7 +50,9 @@ const ContadorElementos = ({setCantidadCarrito}) => {
         -
       </button>
       <div>
-        <button className="btnAgregarAlCarrito" onClick={onAdd}>Agregar al carrito</button>
+        <button className="btnAgregarAlCarrito" onClick={onAdd}>
+          Agregar al carrito
+        </button>
       </div>
     </div>
   );

@@ -3,8 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import productosRopa from "../Componentes/Productos.json";
 import ContadorElementos from "./ContadorElementos";
 import "./CadaProductoEnDetalle.css";
+import ModalFormaDePago from "../Componentes/ModalFormaDePago.js";
 
-const CadaProductoEnDetalle = ({ dataProducto }) => {
+const CadaProductoEnDetalle = () => {
   const { productoId } = useParams();
   const [producto, setProducto] = useState({});
   const [cantidadCarrito, setCantidadCarrito] = useState(0);
@@ -24,6 +25,7 @@ const CadaProductoEnDetalle = ({ dataProducto }) => {
         <img src={producto.imagen} />
         <h3>{producto.descripcion}</h3>
         <h4>${producto.precio}</h4>
+        <ModalFormaDePago data={producto}/>
       </div>
       <div className="contadorEnDetalle">
         {cantidadCarrito > 0 ? (
@@ -36,12 +38,16 @@ const CadaProductoEnDetalle = ({ dataProducto }) => {
               {producto.precio * cantidadCarrito}
             </h3>
             <Link to="/cart">
-            <button>Terminar compra</button>
+              <button>Terminar compra</button>
             </Link>
             <br />
           </div>
         ) : (
-          <ContadorElementos setCantidadCarrito={setCantidadCarrito} />
+          <ContadorElementos
+            setCantidadCarrito={setCantidadCarrito}
+            data={producto}
+            cantidadCarrito={cantidadCarrito}
+          />
         )}
       </div>
     </div>

@@ -17,9 +17,7 @@ const Home = () => {
       </div>
       <div>
         {productos.map((producto) => {
-          return (
-           <CadaProuctoEnHome key={producto.id} producto={producto}/>
-          );
+          return <CadaProuctoEnHome key={producto.id} producto={producto} />;
         })}
       </div>
     </div>

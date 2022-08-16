@@ -6,9 +6,11 @@ import Categorias from "./Componentes/Categorias";
 import Carrito from "./Componentes/Carrito";
 import CadaProductoEnDetalle from "./Componentes/CadaProductoEnDetalle";
 import ProductosPorCategoria from "./Componentes/ProductosPorCategoria";
+import ContextProveedor from "./Componentes/ContextProveedor";
 
 function App() {
   return (
+    <ContextProveedor>
     <BrowserRouter>
       <div>
         <Navbar />
@@ -23,6 +25,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
+    </ContextProveedor>
   );
 }
 

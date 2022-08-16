@@ -96,3 +96,11 @@
 .categoriasStyles h2{
   margin-bottom: 20px;
 }
+
+.modalClass {
+  background-color: gold;
+}
+
+.modalClass img {
+  height: 210px;
+}
