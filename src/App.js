@@ -1,6 +1,6 @@
 import "./App.css";
 import Navbar from "./Componentes/Navbar";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Componentes/Home";
 import Categorias from "./Componentes/Categorias";
 import Carrito from "./Componentes/Carrito";

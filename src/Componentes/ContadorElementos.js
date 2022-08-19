@@ -1,20 +1,29 @@
 import "../../src/Estilos.css";
 import { useState, useEffect } from "react";
-import productosRopa from "../Componentes/Productos.json";
 import { useContext } from "react";
 import { CartContext } from "./ContextProveedor";
+import db from "../Componentes/FirebaseConfig.js";
+import { collection, getDocs } from "firebase/firestore";
 
-const ContadorElementos = ({ setCantidadCarrito, data, cantidadCarrito }) => {
-  const {
-    agregarProductoAlCarrito,
-    tiempoReal,
-    setItemsTiempoReal,
-    itemsTiempoReal,
-  } = useContext(CartContext);
-
+const ContadorElementos = ({ setCantidadCarrito, data }) => {
+  const { agregarProductoAlCarrito, tiempoReal } = useContext(CartContext);
   const [productos, setProductos] = useState([]);
+
+  const getProducts = async () => {
+    const productCollection = collection(db, "productos");
+    const productSnapshot = await getDocs(productCollection);
+    const productList = productSnapshot.docs.map((e) => {
+      let product = e.data();
+      product.id = e.id;
+      return product;
+    });
+    return productList;
+  };
+
   useEffect(() => {
-    setProductos(productosRopa);
+    getProducts().then((res) => {
+      setProductos(res);
+    });
   }, []);
 
   const [contador, setContador] = useState(1);

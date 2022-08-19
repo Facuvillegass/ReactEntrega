@@ -1,23 +1,37 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import productosRopa from "../Componentes/Productos.json";
-import CadaProuctoEnHome from "../Componentes/CadaProductoEnHome.js";
 import Categorias from "./Categorias";
 import ContadorElementos from "./ContadorElementos";
+import { collection, getDocs } from "firebase/firestore";
+import db from "../Componentes/FirebaseConfig.js";
 
 const ProductosPorCategoria = ({ producto }) => {
   const { categoria } = useParams();
-  const [filtrarCategoria, setFiltrarCategoria] = useState([]);
   const [cantidadCarrito, setCantidadCarrito] = useState(0);
 
+  const [productos, setProductos] = useState([]);
+  const getProducts = async () => {
+    const productCollection = collection(db, "productos");
+    const productSnapshot = await getDocs(productCollection);
+    const productList = productSnapshot.docs.map((e) => {
+      let product = e.data();
+      product.id = e.id;
+      return product;
+    });
+    return productList;
+  };
+
   useEffect(() => {
-    setFiltrarCategoria(productosRopa);
+    getProducts().then((res) => {
+      setProductos(res);
+    });
   }, []);
+
 
   return (
     <div>
       <Categorias />
-      {filtrarCategoria.map((producto) => {
+      {productos.map((producto) => {
         if (producto.categoria == categoria) {
           return (
             <div key={producto.id}>

@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import productosRopa from "../Componentes/Productos.json";
 import ContadorElementos from "./ContadorElementos";
 import "./CadaProductoEnDetalle.css";
 import ModalFormaDePago from "../Componentes/ModalFormaDePago.js";
+
+import db from "../Componentes/FirebaseConfig.js";
+import { doc, getDoc } from "firebase/firestore";
 
 const CadaProductoEnDetalle = () => {
   const { productoId } = useParams();
@@ -11,12 +13,19 @@ const CadaProductoEnDetalle = () => {
   const [cantidadCarrito, setCantidadCarrito] = useState(0);
 
   useEffect(() => {
-    productosRopa.some((producto) => {
-      if (producto.id == productoId) {
-        setProducto(producto);
-      }
-    });
-  }, []);
+    obtenerProducto().then ((res)=>{
+      setProducto(res)
+    })
+  }, [productoId]);
+
+  const obtenerProducto = async () => {
+    const docRef = doc(db, "productos", productoId);
+    const docSnapshot = await getDoc(docRef);
+    docSnapshot.data();
+    let producto = docSnapshot.data();
+    producto.id = docSnapshot.id;
+    return producto;
+  };
 
   return (
     <div>
@@ -25,7 +34,7 @@ const CadaProductoEnDetalle = () => {
         <img src={producto.imagen} />
         <h3>{producto.descripcion}</h3>
         <h4>${producto.precio}</h4>
-        <ModalFormaDePago data={producto}/>
+        <ModalFormaDePago data={producto} />
       </div>
       <div className="contadorEnDetalle">
         {cantidadCarrito > 0 ? (

@@ -12,6 +12,7 @@ const Carrito = () => {
   let suma = 0;
   productosCarrito.map((producto) => {
     const cadaProductoPrecio = producto.cantidadCarrito * producto.precio;
+    console.log(cadaProductoPrecio);
     suma = suma + cadaProductoPrecio;
   });
 
@@ -34,6 +35,7 @@ const Carrito = () => {
               <h2>Precio: ${producto.precio}</h2>
               <img className="imgEnCarrito" src={producto.imagen} />
               <h3>Cantidad: {producto.cantidadCarrito}</h3>
+              <h4>Descripción: {producto.descripcion}</h4>
               <button
                 onClick={() => {
                   eliminarDelCarrito(producto.id);
